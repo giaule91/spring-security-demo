@@ -67,7 +67,7 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 
         AccountCredentials us = new AccountCredentials();
         us.setToken(TokenAuthenticationService.addAuthentication(user.getUsername()));
-        us.setUsername(us.getUsername());
+        us.setUsername(user.getUsername());
         ResultCommonEntity<AccountCredentials> result = new ResultCommonEntity<AccountCredentials>(us, true, "successfull", response.getStatus());
         // prepare response for JSON consumption
         response.setContentType(JafSecurityConstants.RESPONSE_CONTENT_TYPE);

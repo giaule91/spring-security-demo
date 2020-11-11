@@ -30,11 +30,12 @@ public class TokenAuthenticationService {
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
     }
     public static String addAuthentication(String username) {
-        return Jwts.builder()
+        String jwt = Jwts.builder()
                 .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
+        return TOKEN_PREFIX + " " + jwt;
     }
     public static Authentication getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(HEADER_STRING);
