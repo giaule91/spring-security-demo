@@ -1,7 +1,6 @@
 package com.tina.demo.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.tina.demo.vo.ResultCommonEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,15 +45,11 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
                                         Authentication authentication)
             throws IOException, ServletException {
 
-        // we need the principal to pass information back to the client
-        // i.e. username and roles
-
         if (!(authentication.getPrincipal() instanceof User)) {
             throw new IllegalArgumentException("Principal must be an instance of XandyUserDetails.");
         }
 
         User user = (User) authentication.getPrincipal();
-
         // Log the successful login attempt
         try {
             AuthenticationSuccessHandler.logSuccessfulLogin(user, request);
@@ -64,7 +59,6 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 
         // JSON transformer for user information
         ObjectMapper mapper = new ObjectMapper();
-
         AccountCredentials us = new AccountCredentials();
         us.setToken(TokenAuthenticationService.addAuthentication(user.getUsername()));
         us.setUsername(user.getUsername());
