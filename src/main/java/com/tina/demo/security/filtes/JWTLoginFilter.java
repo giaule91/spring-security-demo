@@ -1,7 +1,7 @@
 package com.tina.demo.security.filtes;
 
-import com.tina.demo.security.AccountCredentials;
-import com.tina.demo.security.TokenAuthenticationService;
+import com.tina.demo.security.vo.AccountCredentials;
+import com.tina.demo.security.service.TokenAuthenticationService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

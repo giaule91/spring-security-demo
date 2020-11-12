@@ -1,4 +1,4 @@
-package com.tina.demo.security;
+package com.tina.demo.security.service;
 
 /**
  * Created by nhs3108 on 29/03/2017.

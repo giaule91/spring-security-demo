@@ -1,6 +1,6 @@
 package com.tina.demo.security.filtes;
 
-import com.tina.demo.security.TokenAuthenticationService;
+import com.tina.demo.security.service.TokenAuthenticationService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
