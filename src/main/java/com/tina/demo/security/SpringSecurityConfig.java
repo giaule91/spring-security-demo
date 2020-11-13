@@ -12,17 +12,25 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
+    @Autowired
+    private EntryPointHandler entryPointHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/home/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .exceptionHandling()
+                // Set the entry point to the login handling scheme.
+                // It will always return a 401.
+                .authenticationEntryPoint(this.entryPointHandler)
+                .and().formLogin()
                 .loginProcessingUrl("/login")
                 .loginPage("/login")
                 .usernameParameter("username")

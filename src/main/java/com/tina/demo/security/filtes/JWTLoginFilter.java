@@ -1,6 +1,6 @@
 package com.tina.demo.security.filtes;
 
-import com.tina.demo.security.vo.AccountCredentials;
+import com.tina.demo.security.vo.UserInfo;
 import com.tina.demo.security.service.TokenAuthenticationService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,7 +27,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        AccountCredentials credentials = new AccountCredentials(request.getParameter("username"), request.getParameter("password"));
+        UserInfo credentials = new UserInfo(request.getParameter("username"), request.getParameter("password"));
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
                         credentials.getUsername(),

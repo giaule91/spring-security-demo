@@ -1,17 +1,15 @@
 package com.tina.demo.security.vo;
 
-/**
- * Created by nhs3108 on 29/03/2017.
- */
-public class AccountCredentials {
+
+public class UserInfo {
     private String username;
     private String password;
     private String token;
 
-    public AccountCredentials() {
+    public UserInfo() {
     }
 
-    public AccountCredentials(String username, String password) {
+    public UserInfo(String username, String password) {
         this.username = username;
         this.password = password;
     }

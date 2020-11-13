@@ -1,9 +1,5 @@
 package com.tina.demo.security.service;
 
-/**
- * Created by nhs3108 on 29/03/2017.
- */
-
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +25,7 @@ public class TokenAuthenticationService {
                 .compact();
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
     }
+
     public static String addAuthentication(String username) {
         String jwt = Jwts.builder()
                 .setSubject(username)
@@ -37,6 +34,7 @@ public class TokenAuthenticationService {
                 .compact();
         return TOKEN_PREFIX + " " + jwt;
     }
+
     public static Authentication getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(HEADER_STRING);
         if (token != null) {

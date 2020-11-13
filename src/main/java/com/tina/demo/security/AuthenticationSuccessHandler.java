@@ -2,7 +2,7 @@ package com.tina.demo.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tina.demo.security.service.TokenAuthenticationService;
-import com.tina.demo.security.vo.AccountCredentials;
+import com.tina.demo.security.vo.UserInfo;
 import com.tina.demo.vo.ResultCommonEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,10 +61,10 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 
         // JSON transformer for user information
         ObjectMapper mapper = new ObjectMapper();
-        AccountCredentials us = new AccountCredentials();
+        UserInfo us = new UserInfo();
         us.setToken(TokenAuthenticationService.addAuthentication(user.getUsername()));
         us.setUsername(user.getUsername());
-        ResultCommonEntity<AccountCredentials> result = new ResultCommonEntity<AccountCredentials>(us, true, "successfull", response.getStatus());
+        ResultCommonEntity<UserInfo> result = new ResultCommonEntity<UserInfo>(us, true, "successfull", response.getStatus());
         // prepare response for JSON consumption
         response.setContentType(JafSecurityConstants.RESPONSE_CONTENT_TYPE);
         CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());

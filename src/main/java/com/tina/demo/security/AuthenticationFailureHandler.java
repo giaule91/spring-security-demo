@@ -1,7 +1,7 @@
 package com.tina.demo.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tina.demo.security.vo.AccountCredentials;
+import com.tina.demo.security.vo.UserInfo;
 import com.tina.demo.vo.ResultCommonEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +50,7 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
         response.setContentType(JafSecurityConstants.RESPONSE_CONTENT_TYPE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         ObjectMapper mapper = new ObjectMapper();
-        ResultCommonEntity<AccountCredentials> result = new ResultCommonEntity<AccountCredentials>(null, false, "Fail", response.getStatus());
+        ResultCommonEntity<UserInfo> result = new ResultCommonEntity<UserInfo>(null, false, "Fail", response.getStatus());
         PrintWriter writer = response.getWriter();
         writer.print(mapper.writeValueAsString(result));
         writer.flush();
